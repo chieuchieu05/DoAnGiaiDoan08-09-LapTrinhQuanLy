@@ -9,11 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Reports\rptInHoaDon.rdlc" />
     <None Remove="Reports\rptThongKeDoanhThu.rdlc" />
     <None Remove="Reports\rptThongKeSanPham.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Reports\rptInHoaDon.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Reports\rptThongKeDoanhThu.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

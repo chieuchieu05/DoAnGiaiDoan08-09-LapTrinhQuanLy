@@ -103,6 +103,7 @@
             btnHienTatCa.TabIndex = 6;
             btnHienTatCa.Text = "Hiện tất cả";
             btnHienTatCa.UseVisualStyleBackColor = true;
+            btnHienTatCa.Click += btnHienTatCa_Click;
             // 
             // frmThongKeDoanhThu
             // 

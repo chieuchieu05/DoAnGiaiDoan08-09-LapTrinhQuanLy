@@ -1,6 +1,7 @@
 ﻿using ClosedXML.Excel;
 using Microsoft.EntityFrameworkCore;
 using QuanLyCuaHangTraSua.Data;
+using QuanLyCuaHangTraSua.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -71,7 +72,11 @@ namespace QuanLyCuaHangTraSua.Forms
 
         private void btnInHoaDon_Click(object sender, EventArgs e)
         {
-
+            id = Convert.ToInt32(dgvHoaDon.CurrentRow.Cells["colID"].Value.ToString());
+            using (frmInHoaDon inHoaDon = new frmInHoaDon(id))
+            {
+                inHoaDon.ShowDialog();
+            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)

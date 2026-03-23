@@ -70,20 +70,18 @@ namespace QuanLyCuaHangTraSua.Reports
                 HoVaTenNhanVien = r.NhanVien.TenNV,
                 KhachHangID = r.KhachHangID,
                 HoVaTenKhachHang = r.KhachHang.TenKH
-                
+
             });
             danhSachHoaDon = danhSachHoaDon.Where(r => r.NgayLap >= dtpTuNgay.Value && r.NgayLap <= dtpDenNgay.Value);
             danhSachHoaDonDataTable.Clear();
             foreach (var row in danhSachHoaDon)
             {
                 danhSachHoaDonDataTable.AddDanhSachHoaDonRow(row.ID,
-                row.NhanVienID,
                 row.NgayLap,
-                row.TongTien ?? 0,
+                row.TongTien,
                 row.HoVaTenNhanVien,
-                row.KhachHangID,
-                row.HoVaTenKhachHang,
-                row.XemChiTiet);
+                row.HoVaTenKhachHang
+                );
             }
             ReportDataSource reportDataSource = new ReportDataSource();
             reportDataSource.Name = "DanhSachHoaDon";
@@ -97,6 +95,11 @@ namespace QuanLyCuaHangTraSua.Reports
             reportViewer.ZoomMode = ZoomMode.Percent;
             reportViewer.ZoomPercent = 100;
             reportViewer.RefreshReport();
+        }
+
+        private void btnHienTatCa_Click(object sender, EventArgs e)
+        {
+            frmThongKeDoanhThu_Load(sender, e);
         }
     }
 }
