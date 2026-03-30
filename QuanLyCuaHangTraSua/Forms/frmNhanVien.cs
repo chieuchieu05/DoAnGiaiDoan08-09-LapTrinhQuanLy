@@ -33,10 +33,6 @@ namespace QuanLyCuaHangTraSua.Forms
             txtMatKhau.Enabled = giaTri;
             cboVaiTro.Enabled = giaTri;
 
-            
-            btnNhap.Enabled = giaTri;
-            btnXuat.Enabled = giaTri;
-            btnThoat.Enabled = !giaTri;
             btnThem.Enabled = !giaTri;
             btnSua.Enabled = !giaTri;
             btnXoa.Enabled = !giaTri;
@@ -58,6 +54,9 @@ namespace QuanLyCuaHangTraSua.Forms
 
 
             BatTatChucNang(false);
+            panelCRUD.Visible = false;
+            panelNhapXuat.Visible = false;
+            picStaff.Visible = true;
             dgvNhanVien.AutoGenerateColumns = true;
 
             List<NHANVIEN> nv = new List<NHANVIEN>();
@@ -108,7 +107,7 @@ namespace QuanLyCuaHangTraSua.Forms
         {
             BatTatChucNang(true);
             xuLyThem = true;
-            
+
             txtHoTenNV.Clear();
             txtSDTNV.Clear();
             txtDiaChiNV.Clear();
@@ -379,6 +378,42 @@ namespace QuanLyCuaHangTraSua.Forms
                 }
             }
 
+        }
+
+        void DongCacPanels()
+        {
+            panelCRUD.Visible = false;
+            panelNhapXuat.Visible = false;
+            picStaff.Visible = true; 
+        }
+        private void btnCRUD_Click(object sender, EventArgs e)
+        {
+            if (!panelCRUD.Visible)
+            {
+                DongCacPanels();
+                panelCRUD.Visible = true;
+                picStaff.Visible = false;
+            }
+            else
+            {
+                panelCRUD.Visible = false;
+                picStaff.Visible = true;
+            }
+        }
+
+        private void btnNhapXuat_Click(object sender, EventArgs e)
+        {
+            if (!panelNhapXuat.Visible)
+            {
+                DongCacPanels();
+                panelNhapXuat.Visible = true;
+                picStaff.Visible = false;
+            }
+            else
+            {
+                panelNhapXuat.Visible = false;
+                picStaff.Visible = true;
+            }
         }
     }
 }

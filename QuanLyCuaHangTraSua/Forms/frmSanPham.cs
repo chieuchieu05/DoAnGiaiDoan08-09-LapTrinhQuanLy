@@ -36,9 +36,6 @@ namespace QuanLyCuaHangTraSua.Forms
             txtTrangThai.Enabled = giaTri;
             picHinhAnh.Enabled = giaTri;
 
-            btnNhap.Enabled = giaTri;
-            btnXuat.Enabled = giaTri;
-            btnThoat.Enabled = giaTri;
             btnThem.Enabled = !giaTri;
             btnSua.Enabled = !giaTri;
             btnXoa.Enabled = !giaTri;
@@ -59,12 +56,19 @@ namespace QuanLyCuaHangTraSua.Forms
 
         private void frmSanPham_Load(object sender, EventArgs e)
         {
+            picHinhAnh.Parent = panelAnh;
+
             cboLoaiSanPham.SelectedIndexChanged -= cboLoaiSanPham_SelectedIndexChanged;
-            panelChinhSuaAnh.Visible = false;
+            dgvSanPham.DataError += dgvSanPham_DataError;
+            panelChinhSuaAnh.Visible = !panelChinhSuaAnh.Visible;
+            panelCRUD.Visible = !panelCRUD.Visible;
+            panelNhapXuat.Visible = !panelNhapXuat.Visible;
             BatTatChucNang(false);
             LayLoaiSPVaoCombobox();
 
             dgvSanPham.AutoGenerateColumns = false;
+
+            LoadAnh();
 
             List<DanhSachSanPham> sp = new List<DanhSachSanPham>();
             sp = context.SanPham.Select(r => new DanhSachSanPham
@@ -80,7 +84,6 @@ namespace QuanLyCuaHangTraSua.Forms
                 HinhAnh = r.HinhAnh
             }).ToList();
 
-            //BindingSource bindingSource = new BindingSource();
             bindingSource.DataSource = sp;
 
             cboLoaiSanPham.DataBindings.Clear();
@@ -120,7 +123,31 @@ namespace QuanLyCuaHangTraSua.Forms
             numDonGia.DataBindings.Clear();
             numDonGia.DataBindings.Add("Value", bindingSource, "Gia", false, DataSourceUpdateMode.Never);
 
+            dgvSanPham.DataSource = bindingSource;
+            cboLoaiSanPham.SelectedIndexChanged += cboLoaiSanPham_SelectedIndexChanged;
+        }
+        private void LoadAnh()
+        {
+            List<DanhSachSanPham> sp = new List<DanhSachSanPham>();
+            sp = context.SanPham.Select(r => new DanhSachSanPham
+            {
+                ID = r.ID,
+                TenSP = r.TenSP,
+                LoaiSanPhamID = r.LoaiSanPhamID,
+                TenLoaiSP = r.LoaiSanPham.TenLoaiSP,
+                Size = r.Size,
+                SoLuong = r.SoLuong,
+                Gia = r.Gia,
+                TrangThaiSP = r.TrangThaiSP,
+                HinhAnh = r.HinhAnh
+            }).ToList();
+
+            bindingSource.DataSource = sp;         
+
+            picHinhAnh.Image?.Dispose();
+            picHinhAnh.Image = null;
             picHinhAnh.DataBindings.Clear();
+
             Binding hinhAnh = new Binding("ImageLocation", bindingSource, "HinhAnh");
             hinhAnh.Format += (s, e) =>
             {
@@ -128,33 +155,54 @@ namespace QuanLyCuaHangTraSua.Forms
                 {
                     e.Value = Path.Combine(imagesFolder, e.Value.ToString());
                 }
+                else
+                {
+                    e.Value = null;  
+                }
             };
             picHinhAnh.DataBindings.Add(hinhAnh);
+
+            dgvSanPham.CellFormatting -= dataGridView_CellFormatting;  
             dgvSanPham.CellFormatting += dataGridView_CellFormatting;
 
-            dgvSanPham.DataSource = bindingSource;
-            cboLoaiSanPham.SelectedIndexChanged += cboLoaiSanPham_SelectedIndexChanged;
+            dgvSanPham.Refresh();
+            picHinhAnh.Refresh();
         }
-
         private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvSanPham.Columns[e.ColumnIndex].Name == "HinhAnh" && e.Value != null)
+            if (dgvSanPham.Columns[e.ColumnIndex].Name == "HinhAnh")
             {
+                if (e.Value == null || string.IsNullOrEmpty(e.Value.ToString()))
+                {
+                    e.Value = null;
+                    return;
+                }
+
                 string path = Path.Combine(imagesFolder, e.Value.ToString());
 
                 if (File.Exists(path))
                 {
-                    Image image = Image.FromFile(path);
-                    image = new Bitmap(image, 24, 24);
-                    e.Value = image;
+                    using (Image img = Image.FromFile(path))
+                    {
+                        e.Value = new Bitmap(img, 24, 24);
+                    }
+                }
+                else
+                {
+                    e.Value = null;
                 }
             }
+        }
+
+        private void dgvSanPham_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.ThrowException = false;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
             bindingSource.SuspendBinding();
-            bindingSource.Position = -1; // 🔥 QUAN TRỌNG
+            bindingSource.Position = -1; 
 
             dgvSanPham.ClearSelection();
             xuLyThem = true;
@@ -226,7 +274,7 @@ namespace QuanLyCuaHangTraSua.Forms
                 if (loaiID == 1 || loaiID == 2)
                 {
                     sp.Size = cboSize.Text;
-                    //sp.SoLuong = null;
+                  
                 }
                 else // TOPPING hoặc BANH
                 {
@@ -258,12 +306,10 @@ namespace QuanLyCuaHangTraSua.Forms
                     if (loaiID == 1 || loaiID == 2)
                     {
                         sp.Size = cboSize.Text;
-                        //sp.SoLuong = null;
                     }
                     else
                     {
                         sp.Size = null;
-                        //sp.SoLuong = (int)numSoLuong.Value;
                     }
 
                     if (!string.IsNullOrEmpty(picHinhAnh.ImageLocation))
@@ -297,14 +343,11 @@ namespace QuanLyCuaHangTraSua.Forms
             if (loaiID == 1 || loaiID == 2)
             {
                 cboSize.Enabled = true;
-                //numSoLuong.Enabled = false;
-                //numSoLuong.Value = 0;
             }
             else
             {
                 cboSize.Enabled = false;
                 cboSize.Text = "";
-                //numSoLuong.Enabled = true;
             }
         }
 
@@ -346,9 +389,23 @@ namespace QuanLyCuaHangTraSua.Forms
             }
         }
 
+        void DongCacPanels()
+        {
+            panelChinhSuaAnh.Visible = false;
+            panelCRUD.Visible = false;
+            panelNhapXuat.Visible = false;
+        }
         private void btnTacVu_Click(object sender, EventArgs e)
         {
-            panelChinhSuaAnh.Visible = true;
+            if (!panelChinhSuaAnh.Visible)
+            {
+                DongCacPanels();
+                panelChinhSuaAnh.Visible = true;
+            }
+            else
+            {
+                panelChinhSuaAnh.Visible = false;
+            }
         }
 
         private void btnNhap_Click(object sender, EventArgs e)
@@ -455,6 +512,12 @@ namespace QuanLyCuaHangTraSua.Forms
 
         private void btnXoayAnh_Click(object sender, EventArgs e)
         {
+            // Kiểm tra 
+            if (bindingSource.Current == null)
+            {
+                return;
+            }
+
             if (dgvSanPham.CurrentRow == null)
                 return;
 
@@ -466,48 +529,127 @@ namespace QuanLyCuaHangTraSua.Forms
             if (!File.Exists(path))
                 return;
 
-            picHinhAnh.Image = null; //Giải phóng
+            // TẠO FILE MỚI + XOAY ẢNH (KHÔNG XÓA FILE CŨ)
+            string newFileName = Guid.NewGuid().ToString() + Path.GetExtension(item.HinhAnh);
+            string newPath = Path.Combine(imagesFolder, newFileName);
 
-            //Đọc file KHÔNG lock
-            byte[] bytes = File.ReadAllBytes(path);
-            using (MemoryStream ms = new MemoryStream(bytes))
+            try
             {
-                using (Bitmap bmp = new Bitmap(ms))
+                using (Image img = Image.FromFile(path))
                 {
-                    bmp.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                    bmp.Save(path);
+                    Image imgXoay = new Bitmap(img.Width, img.Height);
+                    using (Graphics g = Graphics.FromImage(imgXoay))
+                    {
+                        g.Clear(Color.Transparent);
+                        g.DrawImage(img, 0, 0);
+                    }
+                    imgXoay.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    imgXoay.Save(newPath, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    imgXoay.Dispose();
                 }
-            }
 
-            picHinhAnh.ImageLocation = path;
-            dgvSanPham.Refresh();
+                // Cập nhật database
+                int idSP = item.ID;
+                SANPHAM sp = context.SanPham.Find(idSP);
+                if (sp != null)
+                {
+                    sp.HinhAnh = newFileName;
+                    context.SaveChanges();
+                }
+
+                MessageBox.Show("Xoay ảnh thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadAnh();
+            }
+            catch (Exception ex)
+            {
+                if (File.Exists(newPath)) File.Delete(newPath);
+                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi xoay ảnh", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
         }
 
         private void btnXoaAnh_Click(object sender, EventArgs e)
         {
-            if (dgvSanPham.CurrentRow == null)
-                return;
-
-            var item = dgvSanPham.CurrentRow.DataBoundItem as DanhSachSanPham;
-            if (item == null || string.IsNullOrEmpty(item.HinhAnh))
-                return;
-
-            string path = Path.Combine(imagesFolder, item.HinhAnh);
-
-            picHinhAnh.Image = null; 
-
-            if (File.Exists(path))
-                File.Delete(path);
-
-            int id = item.ID;
-            var sp = context.SanPham.Find(id);
-            if (sp != null)
+            if (dgvSanPham.CurrentRow?.DataBoundItem is DanhSachSanPham item && !string.IsNullOrEmpty(item.HinhAnh))
             {
-                sp.HinhAnh = null;
-                context.SaveChanges();
+                if (MessageBox.Show($"Xóa ảnh '{item.HinhAnh}'?", "Xác nhận",MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    context.SanPham.Find(item.ID).HinhAnh = null;
+                    context.SaveChanges();
+                    LoadAnh(); 
+                    MessageBox.Show("Thành công!", "Thông báo");
+                }
             }
+        }
 
-            frmSanPham_Load(sender, e);
+        private void btnCRUD_Click(object sender, EventArgs e)
+        {
+            if (!panelCRUD.Visible)
+            {
+                DongCacPanels();
+                panelCRUD.Visible = true;
+            }
+            else
+            {
+                panelCRUD.Visible = false;
+            }
+        }
+
+        private void btnNhapXuat_Click(object sender, EventArgs e)
+        {
+            if (!panelNhapXuat.Visible)
+            {
+                DongCacPanels();
+                panelNhapXuat.Visible = true;
+            }
+            else
+            {
+                panelNhapXuat.Visible = false;
+            }
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            btnHuyBo.Enabled = true;
+            btnThem.Enabled = false;
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
+            string tuKhoa = txtTimKiem.Text.Trim();
+
+            List<DanhSachSanPham> ketQua;
+
+            if (string.IsNullOrEmpty(tuKhoa))
+            {
+                MessageBox.Show("Vui lòng nhập sản phẩm cần tìm kiếm!", "Cảnh báo");
+                return;
+            }
+            else
+            {
+                ketQua = context.SanPham.Where(sp => sp.TenSP.Contains(tuKhoa)).Select(r => new DanhSachSanPham
+                {
+                    ID = r.ID,
+                    TenSP = r.TenSP,
+                    LoaiSanPhamID = r.LoaiSanPhamID,
+                    TenLoaiSP = r.LoaiSanPham.TenLoaiSP,
+                    Size = r.Size,
+                    SoLuong = r.SoLuong,
+                    Gia = r.Gia,
+                    TrangThaiSP = r.TrangThaiSP,
+                    HinhAnh = r.HinhAnh
+                }).ToList();
+            }    
+                
+            //List<DanhSachSanPham> ketQua;
+
+            
+            //else
+            //{
+            //    ketQua = context.DanhSachSanPham.Where(sp => sp.TenSP.Contains(tuKhoa)).ToList();
+            //}
+
+            bindingSource.DataSource = ketQua;
+            dgvSanPham.DataSource = bindingSource;
         }
     }
 }

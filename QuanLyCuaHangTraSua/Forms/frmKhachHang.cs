@@ -29,14 +29,11 @@ namespace QuanLyCuaHangTraSua.Forms
             txtDiaChiKH.Enabled = giaTri;
             txtSoTaiKhoanKH.Enabled = giaTri;
             txtEmailKH.Enabled = giaTri;
-            
+
 
             btnThem.Enabled = !giaTri;
             btnSua.Enabled = !giaTri;
             btnXoa.Enabled = !giaTri;
-            btnThoat.Enabled = giaTri;
-            btnNhap.Enabled = !giaTri;
-            btnXuat.Enabled = !giaTri;
         }
 
         public frmKhachHang()
@@ -48,11 +45,14 @@ namespace QuanLyCuaHangTraSua.Forms
         private void frmKhachHang_Load(object sender, EventArgs e)
         {
             BatTatChucNang(false);
+            picBackGround.Visible = true;
+            panelCRUD.Visible = false;
+            panelNhapXuat.Visible = false;
+
 
             List<KHACHHANG> kh = new List<KHACHHANG>();
             kh = context.KhachHang.ToList();
 
-            //BindingSource bindingSource = new BindingSource();
             bindingSource.DataSource = kh;
 
             txtHoTenKH.DataBindings.Clear();
@@ -146,8 +146,6 @@ namespace QuanLyCuaHangTraSua.Forms
                         kh.DiaChiKH = txtDiaChiKH.Text;
                         kh.EmailKH = txtEmailKH.Text;
                         kh.SoTaiKhoanKH = txtSoTaiKhoanKH.Text;
-                        //context.KhachHang.Update(kh);
-                        //context.SaveChanges();
                     }
                 }
 
@@ -181,7 +179,6 @@ namespace QuanLyCuaHangTraSua.Forms
             if (string.IsNullOrEmpty(tuKhoa))
             {
                 // Nếu không nhập gì → hiện tất cả
-                //ketQua = context.KhachHang.ToList();
                 MessageBox.Show("Vui lòng nhập họ tên khách hàng cần tìm kiếm!", "Cảnh báo");
                 return;
             }
@@ -190,7 +187,6 @@ namespace QuanLyCuaHangTraSua.Forms
                 ketQua = context.KhachHang.Where(kh => kh.TenKH.Contains(tuKhoa)).ToList();
             }
 
-            //BindingSource bindingSource = new BindingSource();
             bindingSource.DataSource = ketQua;
 
             dgvKhachHang.DataSource = bindingSource;
@@ -330,6 +326,42 @@ namespace QuanLyCuaHangTraSua.Forms
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        void DongCacPanels()
+        {
+            panelCRUD.Visible = false;
+            panelNhapXuat.Visible = false;
+            picBackGround.Visible = true;
+        }
+        private void btnCRUD_Click(object sender, EventArgs e)
+        {
+            if (!panelCRUD.Visible)
+            {
+                DongCacPanels();
+                panelCRUD.Visible = true;
+                picBackGround.Visible = false;
+            }
+            else
+            {
+                panelCRUD.Visible = false;
+                picBackGround.Visible = true;
+            }
+        }
+
+        private void btnNhapXuat_Click(object sender, EventArgs e)
+        {
+            if (!panelNhapXuat.Visible)
+            {
+                DongCacPanels();
+                panelNhapXuat.Visible = true;
+                picBackGround.Visible = false;
+            }
+            else
+            {
+                panelNhapXuat.Visible = false;
+                picBackGround.Visible = true;
+            }
         }
     }
 }

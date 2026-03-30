@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDangNhap));
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -43,27 +42,33 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label1.ForeColor = Color.RosyBrown;
             label1.Location = new Point(368, 53);
             label1.Name = "label1";
-            label1.Size = new Size(95, 20);
+            label1.Size = new Size(113, 23);
             label1.TabIndex = 0;
             label1.Text = "ĐĂNG NHẬP";
             // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label2.ForeColor = Color.RosyBrown;
             label2.Location = new Point(273, 111);
             label2.Name = "label2";
-            label2.Size = new Size(110, 20);
+            label2.Size = new Size(116, 20);
             label2.TabIndex = 1;
             label2.Text = "Tên đăng nhập:";
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label3.ForeColor = Color.RosyBrown;
             label3.Location = new Point(273, 203);
             label3.Name = "label3";
-            label3.Size = new Size(73, 20);
+            label3.Size = new Size(79, 20);
             label3.TabIndex = 2;
             label3.Text = "Mật khẩu:";
             // 
@@ -85,30 +90,36 @@
             // 
             // btnDangNhap
             // 
-            btnDangNhap.Location = new Point(134, 293);
+            btnDangNhap.BackColor = Color.PowderBlue;
+            btnDangNhap.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnDangNhap.ForeColor = Color.Teal;
+            btnDangNhap.Location = new Point(283, 293);
             btnDangNhap.Name = "btnDangNhap";
-            btnDangNhap.Size = new Size(137, 41);
+            btnDangNhap.Size = new Size(106, 41);
             btnDangNhap.TabIndex = 5;
             btnDangNhap.Text = "Đăng nhập";
-            btnDangNhap.UseVisualStyleBackColor = true;
+            btnDangNhap.UseVisualStyleBackColor = false;
             btnDangNhap.Click += btnDangNhap_Click;
             // 
             // btnHuyBo
             // 
-            btnHuyBo.Location = new Point(277, 293);
+            btnHuyBo.BackColor = Color.PowderBlue;
+            btnHuyBo.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnHuyBo.ForeColor = Color.Teal;
+            btnHuyBo.Location = new Point(404, 293);
             btnHuyBo.Name = "btnHuyBo";
-            btnHuyBo.Size = new Size(137, 41);
+            btnHuyBo.Size = new Size(106, 41);
             btnHuyBo.TabIndex = 6;
             btnHuyBo.Text = "Huỷ bỏ";
-            btnHuyBo.UseVisualStyleBackColor = true;
+            btnHuyBo.UseVisualStyleBackColor = false;
             btnHuyBo.Click += btnHuyBo_Click;
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(58, 69);
+            pictureBox1.Image = Properties.Resources.user;
+            pictureBox1.Location = new Point(33, 79);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(163, 199);
+            pictureBox1.Size = new Size(209, 225);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
@@ -117,6 +128,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.LavenderBlush;
             ClientSize = new Size(623, 383);
             Controls.Add(pictureBox1);
             Controls.Add(btnHuyBo);

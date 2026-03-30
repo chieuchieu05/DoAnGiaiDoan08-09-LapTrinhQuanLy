@@ -54,7 +54,9 @@ namespace QuanLyCuaHangTraSua.Forms
         {
             BatTatChucNang(false);
             LayDonViTinhVaoCombobox();
-            panelTacVu.Visible = false;
+            panelCRUD.Visible = !panelCRUD.Visible;
+            panelNhapXuat.Visible = !panelNhapXuat.Visible;
+            panelTimKiem.Visible = !panelTimKiem.Visible;
 
             dgvNguyenLieu.AutoGenerateColumns = false;
 
@@ -310,9 +312,77 @@ namespace QuanLyCuaHangTraSua.Forms
             }
         }
 
+        void DongCacPanels()
+        {
+            panelCRUD.Visible = false;
+            panelNhapXuat.Visible = false;
+            panelTimKiem.Visible = false;
+        }
         private void btnTacVu_Click(object sender, EventArgs e)
         {
-            panelTacVu.Visible = true;
+            if (!panelCRUD.Visible)
+            {
+                DongCacPanels();
+                panelCRUD.Visible = true;
+            }
+            else
+            {
+                panelCRUD.Visible = false;
+            }
+        }
+
+        private void btnNhapXuat_Click(object sender, EventArgs e)
+        {
+            if (!panelCRUD.Visible)
+            {
+                DongCacPanels();
+                panelNhapXuat.Visible = true;
+            }
+            else
+            {
+                panelNhapXuat.Visible = false;
+            }
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            if (!panelCRUD.Visible)
+            {
+                DongCacPanels();
+                panelTimKiem.Visible = true;
+            }
+            else
+            {
+                panelTimKiem.Visible = false;
+            }
+        }
+
+        private void btnTim_Click(object sender, EventArgs e)
+        {
+            btnHuyBo.Enabled = true;
+            btnThem.Enabled = false;
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
+            string tuKhoa = txtTimKiem.Text.Trim();
+
+            List<NGUYENLIEU> ketQua;
+
+            if (string.IsNullOrEmpty(tuKhoa))
+            {
+                // Nếu không nhập gì → hiện tất cả
+                //ketQua = context.KhachHang.ToList();
+                MessageBox.Show("Vui lòng nhập nguyên liệu cần tìm kiếm!", "Cảnh báo");
+                return;
+            }
+            else
+            {
+                ketQua = context.NguyenLieu.Where(nl => nl.TenNL.Contains(tuKhoa)).ToList();
+            }
+
+            //BindingSource bindingSource = new BindingSource();
+            bindingSource.DataSource = ketQua;
+
+            dgvNguyenLieu.DataSource = bindingSource;
         }
     }
 }

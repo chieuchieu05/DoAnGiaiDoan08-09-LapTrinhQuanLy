@@ -59,231 +59,323 @@
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             toolStripStatusLabel2 = new ToolStripStatusLabel();
             lblLienKet = new ToolStripStatusLabel();
+            panelMain = new Panel();
             menuStrip.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip
             // 
+            menuStrip.BackColor = Color.LavenderBlush;
             menuStrip.ImageScalingSize = new Size(20, 20);
             menuStrip.Items.AddRange(new ToolStripItem[] { mnuHeThong, mnuQuanLy, mnuBaoCaoThongKe, mnuTroGiup });
             menuStrip.Location = new Point(0, 0);
             menuStrip.Name = "menuStrip";
-            menuStrip.Size = new Size(982, 28);
+            menuStrip.Size = new Size(1902, 36);
             menuStrip.TabIndex = 0;
             menuStrip.Text = "menuStrip1";
             // 
             // mnuHeThong
             // 
+            mnuHeThong.BackColor = Color.LavenderBlush;
             mnuHeThong.DropDownItems.AddRange(new ToolStripItem[] { mnuDangNhap, mnuDangXuat, mnuDoiMatKhau, toolStripMenuItem2, mnuThoat });
+            mnuHeThong.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            mnuHeThong.ForeColor = Color.RosyBrown;
             mnuHeThong.Name = "mnuHeThong";
-            mnuHeThong.Size = new Size(85, 24);
+            mnuHeThong.Padding = new Padding(40, 0, 40, 0);
+            mnuHeThong.Size = new Size(184, 32);
             mnuHeThong.Text = "Hệ thống";
             // 
             // mnuDangNhap
             // 
+            mnuDangNhap.BackColor = Color.LavenderBlush;
+            mnuDangNhap.ForeColor = Color.RosyBrown;
             mnuDangNhap.Name = "mnuDangNhap";
-            mnuDangNhap.Size = new Size(190, 26);
+            mnuDangNhap.Padding = new Padding(0, 10, 0, 10);
+            mnuDangNhap.Size = new Size(241, 50);
             mnuDangNhap.Text = "Đăng nhập...";
             mnuDangNhap.Click += mnuDangNhap_Click;
             // 
             // mnuDangXuat
             // 
+            mnuDangXuat.BackColor = Color.LavenderBlush;
+            mnuDangXuat.ForeColor = Color.RosyBrown;
             mnuDangXuat.Name = "mnuDangXuat";
-            mnuDangXuat.Size = new Size(190, 26);
+            mnuDangXuat.Padding = new Padding(0, 10, 0, 10);
+            mnuDangXuat.Size = new Size(241, 50);
             mnuDangXuat.Text = "Đăng xuất...";
             mnuDangXuat.Click += mnuDangXuat_Click;
             // 
             // mnuDoiMatKhau
             // 
+            mnuDoiMatKhau.BackColor = Color.LavenderBlush;
+            mnuDoiMatKhau.ForeColor = Color.RosyBrown;
             mnuDoiMatKhau.Name = "mnuDoiMatKhau";
-            mnuDoiMatKhau.Size = new Size(190, 26);
+            mnuDoiMatKhau.Padding = new Padding(0, 10, 0, 10);
+            mnuDoiMatKhau.Size = new Size(241, 50);
             mnuDoiMatKhau.Text = "Đổi mật khẩu...";
             // 
             // toolStripMenuItem2
             // 
+            toolStripMenuItem2.BackColor = Color.LavenderBlush;
+            toolStripMenuItem2.ForeColor = Color.RosyBrown;
             toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(187, 6);
+            toolStripMenuItem2.Size = new Size(238, 6);
             // 
             // mnuThoat
             // 
+            mnuThoat.BackColor = Color.LavenderBlush;
+            mnuThoat.ForeColor = Color.RosyBrown;
             mnuThoat.Name = "mnuThoat";
+            mnuThoat.Padding = new Padding(0, 10, 0, 10);
             mnuThoat.ShortcutKeys = Keys.Alt | Keys.F4;
-            mnuThoat.Size = new Size(190, 26);
+            mnuThoat.Size = new Size(241, 50);
             mnuThoat.Text = "Thoát";
             // 
             // mnuQuanLy
             // 
+            mnuQuanLy.BackColor = Color.LavenderBlush;
             mnuQuanLy.DropDownItems.AddRange(new ToolStripItem[] { mnuLoaiSanPham, mnuSanPham, toolStripMenuItem1, mnuKhachHang, mnuNhanVien, toolStripMenuItem3, mnuHoaDon, mnuPhieuNhap, toolStripMenuItem4, mnuNguyenLieu, mnuCongThuc, mnuNhaCungCap });
+            mnuQuanLy.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            mnuQuanLy.ForeColor = Color.RosyBrown;
             mnuQuanLy.Name = "mnuQuanLy";
-            mnuQuanLy.Size = new Size(73, 24);
+            mnuQuanLy.Padding = new Padding(40, 0, 40, 0);
+            mnuQuanLy.Size = new Size(169, 32);
             mnuQuanLy.Text = "Quản lý";
             // 
             // mnuLoaiSanPham
             // 
+            mnuLoaiSanPham.BackColor = Color.LavenderBlush;
+            mnuLoaiSanPham.ForeColor = Color.RosyBrown;
             mnuLoaiSanPham.Name = "mnuLoaiSanPham";
-            mnuLoaiSanPham.Size = new Size(216, 26);
+            mnuLoaiSanPham.Padding = new Padding(0, 10, 0, 10);
+            mnuLoaiSanPham.Size = new Size(274, 50);
             mnuLoaiSanPham.Text = "Loại sản phẩm";
             mnuLoaiSanPham.Click += mnuLoaiSanPham_Click;
             // 
             // mnuSanPham
             // 
+            mnuSanPham.BackColor = Color.LavenderBlush;
+            mnuSanPham.ForeColor = Color.RosyBrown;
             mnuSanPham.Name = "mnuSanPham";
-            mnuSanPham.Size = new Size(216, 26);
+            mnuSanPham.Padding = new Padding(0, 10, 0, 10);
+            mnuSanPham.Size = new Size(274, 50);
             mnuSanPham.Text = "Sản phẩm";
             mnuSanPham.Click += mnuSanPham_Click;
             // 
             // toolStripMenuItem1
             // 
+            toolStripMenuItem1.BackColor = Color.LavenderBlush;
+            toolStripMenuItem1.ForeColor = Color.RosyBrown;
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(213, 6);
+            toolStripMenuItem1.Size = new Size(271, 6);
             // 
             // mnuKhachHang
             // 
+            mnuKhachHang.BackColor = Color.LavenderBlush;
+            mnuKhachHang.ForeColor = Color.RosyBrown;
             mnuKhachHang.Name = "mnuKhachHang";
-            mnuKhachHang.Size = new Size(216, 26);
+            mnuKhachHang.Padding = new Padding(0, 10, 0, 10);
+            mnuKhachHang.Size = new Size(274, 50);
             mnuKhachHang.Text = "Khách hàng";
             mnuKhachHang.Click += mnuKhachHang_Click;
             // 
             // mnuNhanVien
             // 
+            mnuNhanVien.BackColor = Color.LavenderBlush;
+            mnuNhanVien.ForeColor = Color.RosyBrown;
             mnuNhanVien.Name = "mnuNhanVien";
-            mnuNhanVien.Size = new Size(216, 26);
+            mnuNhanVien.Padding = new Padding(0, 10, 0, 10);
+            mnuNhanVien.Size = new Size(274, 50);
             mnuNhanVien.Text = "Nhân viên";
             mnuNhanVien.Click += mnuNhanVien_Click;
             // 
             // toolStripMenuItem3
             // 
+            toolStripMenuItem3.BackColor = Color.LavenderBlush;
+            toolStripMenuItem3.ForeColor = Color.RosyBrown;
             toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new Size(213, 6);
+            toolStripMenuItem3.Size = new Size(271, 6);
             // 
             // mnuHoaDon
             // 
+            mnuHoaDon.BackColor = Color.LavenderBlush;
+            mnuHoaDon.ForeColor = Color.RosyBrown;
             mnuHoaDon.Name = "mnuHoaDon";
-            mnuHoaDon.Size = new Size(216, 26);
+            mnuHoaDon.Padding = new Padding(0, 10, 0, 10);
+            mnuHoaDon.Size = new Size(274, 50);
             mnuHoaDon.Text = "Hoá đơn bán hàng";
             mnuHoaDon.Click += mnuHoaDon_Click;
             // 
             // mnuPhieuNhap
             // 
+            mnuPhieuNhap.BackColor = Color.LavenderBlush;
+            mnuPhieuNhap.ForeColor = Color.RosyBrown;
             mnuPhieuNhap.Name = "mnuPhieuNhap";
-            mnuPhieuNhap.Size = new Size(216, 26);
+            mnuPhieuNhap.Padding = new Padding(0, 10, 0, 10);
+            mnuPhieuNhap.Size = new Size(274, 50);
             mnuPhieuNhap.Text = "Phiếu nhập";
             mnuPhieuNhap.Click += mnuPhieuNhap_Click;
             // 
             // toolStripMenuItem4
             // 
+            toolStripMenuItem4.BackColor = Color.LavenderBlush;
+            toolStripMenuItem4.ForeColor = Color.RosyBrown;
             toolStripMenuItem4.Name = "toolStripMenuItem4";
-            toolStripMenuItem4.Size = new Size(213, 6);
+            toolStripMenuItem4.Size = new Size(271, 6);
             // 
             // mnuNguyenLieu
             // 
+            mnuNguyenLieu.BackColor = Color.LavenderBlush;
+            mnuNguyenLieu.ForeColor = Color.RosyBrown;
             mnuNguyenLieu.Name = "mnuNguyenLieu";
-            mnuNguyenLieu.Size = new Size(216, 26);
+            mnuNguyenLieu.Padding = new Padding(0, 10, 0, 10);
+            mnuNguyenLieu.Size = new Size(274, 50);
             mnuNguyenLieu.Text = "Nguyên liệu";
             mnuNguyenLieu.Click += mnuNguyenLieu_Click;
             // 
             // mnuCongThuc
             // 
+            mnuCongThuc.BackColor = Color.LavenderBlush;
+            mnuCongThuc.ForeColor = Color.RosyBrown;
             mnuCongThuc.Name = "mnuCongThuc";
-            mnuCongThuc.Size = new Size(216, 26);
+            mnuCongThuc.Padding = new Padding(0, 10, 0, 10);
+            mnuCongThuc.Size = new Size(274, 50);
             mnuCongThuc.Text = "Công thức";
             mnuCongThuc.Click += mnuCongThuc_Click;
             // 
             // mnuNhaCungCap
             // 
+            mnuNhaCungCap.BackColor = Color.LavenderBlush;
+            mnuNhaCungCap.ForeColor = Color.RosyBrown;
             mnuNhaCungCap.Name = "mnuNhaCungCap";
-            mnuNhaCungCap.Size = new Size(216, 26);
+            mnuNhaCungCap.Padding = new Padding(0, 10, 0, 10);
+            mnuNhaCungCap.Size = new Size(274, 50);
             mnuNhaCungCap.Text = "Nhà cung cấp";
             mnuNhaCungCap.Click += mnuNhaCungCap_Click;
             // 
             // mnuBaoCaoThongKe
             // 
+            mnuBaoCaoThongKe.BackColor = Color.LavenderBlush;
             mnuBaoCaoThongKe.DropDownItems.AddRange(new ToolStripItem[] { mnuThongKeSanPham, mnuThongKeDoanhThu });
+            mnuBaoCaoThongKe.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            mnuBaoCaoThongKe.ForeColor = Color.RosyBrown;
             mnuBaoCaoThongKe.Name = "mnuBaoCaoThongKe";
-            mnuBaoCaoThongKe.Size = new Size(152, 24);
+            mnuBaoCaoThongKe.Padding = new Padding(40, 0, 40, 0);
+            mnuBaoCaoThongKe.Size = new Size(279, 32);
             mnuBaoCaoThongKe.Text = "Báo cáo - Thống kê";
             // 
             // mnuThongKeSanPham
             // 
+            mnuThongKeSanPham.BackColor = Color.LavenderBlush;
+            mnuThongKeSanPham.ForeColor = Color.RosyBrown;
             mnuThongKeSanPham.Name = "mnuThongKeSanPham";
-            mnuThongKeSanPham.Size = new Size(224, 26);
+            mnuThongKeSanPham.Padding = new Padding(0, 10, 0, 10);
+            mnuThongKeSanPham.Size = new Size(289, 50);
             mnuThongKeSanPham.Text = "Thống kê sản phẩm";
             mnuThongKeSanPham.Click += mnuThongKeSanPham_Click;
             // 
             // mnuThongKeDoanhThu
             // 
+            mnuThongKeDoanhThu.BackColor = Color.LavenderBlush;
+            mnuThongKeDoanhThu.ForeColor = Color.RosyBrown;
             mnuThongKeDoanhThu.Name = "mnuThongKeDoanhThu";
-            mnuThongKeDoanhThu.Size = new Size(224, 26);
+            mnuThongKeDoanhThu.Padding = new Padding(0, 10, 0, 10);
+            mnuThongKeDoanhThu.Size = new Size(289, 50);
             mnuThongKeDoanhThu.Text = "Thống kê doanh thu";
             mnuThongKeDoanhThu.Click += mnuThongKeDoanhThu_Click;
             // 
             // mnuTroGiup
             // 
+            mnuTroGiup.BackColor = Color.LavenderBlush;
             mnuTroGiup.DropDownItems.AddRange(new ToolStripItem[] { mnuHuongDanSuDung, mnuThongTinPhanMem });
+            mnuTroGiup.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            mnuTroGiup.ForeColor = Color.RosyBrown;
             mnuTroGiup.Name = "mnuTroGiup";
-            mnuTroGiup.Size = new Size(82, 24);
+            mnuTroGiup.Padding = new Padding(40, 0, 40, 0);
+            mnuTroGiup.Size = new Size(181, 32);
             mnuTroGiup.Text = "Trợ giúp ";
             // 
             // mnuHuongDanSuDung
             // 
+            mnuHuongDanSuDung.BackColor = Color.LavenderBlush;
+            mnuHuongDanSuDung.ForeColor = Color.RosyBrown;
             mnuHuongDanSuDung.Name = "mnuHuongDanSuDung";
+            mnuHuongDanSuDung.Padding = new Padding(0, 10, 0, 10);
             mnuHuongDanSuDung.ShortcutKeys = Keys.Control | Keys.F1;
-            mnuHuongDanSuDung.Size = new Size(281, 26);
+            mnuHuongDanSuDung.Size = new Size(368, 50);
             mnuHuongDanSuDung.Text = "Hướng dẫn sử dụng";
             // 
             // mnuThongTinPhanMem
             // 
+            mnuThongTinPhanMem.BackColor = Color.LavenderBlush;
+            mnuThongTinPhanMem.ForeColor = Color.RosyBrown;
             mnuThongTinPhanMem.Name = "mnuThongTinPhanMem";
-            mnuThongTinPhanMem.Size = new Size(281, 26);
+            mnuThongTinPhanMem.Size = new Size(368, 32);
             mnuThongTinPhanMem.Text = "Thông tin phần mềm";
             // 
             // statusStrip1
             // 
+            statusStrip1.BackColor = Color.LavenderBlush;
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { lblTrangThai, toolStripStatusLabel1, toolStripStatusLabel2, lblLienKet });
-            statusStrip1.Location = new Point(0, 627);
+            statusStrip1.Location = new Point(0, 1004);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(982, 26);
+            statusStrip1.Size = new Size(1902, 29);
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
             // 
             // lblTrangThai
             // 
+            lblTrangThai.Font = new Font("Segoe UI", 10F, FontStyle.Italic);
+            lblTrangThai.ForeColor = SystemColors.ActiveCaptionText;
             lblTrangThai.Name = "lblTrangThai";
-            lblTrangThai.Size = new Size(118, 20);
+            lblTrangThai.Size = new Size(133, 23);
             lblTrangThai.Text = "Chưa đăng nhập";
             // 
             // toolStripStatusLabel1
             // 
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            toolStripStatusLabel1.Size = new Size(0, 20);
+            toolStripStatusLabel1.Size = new Size(0, 23);
             // 
             // toolStripStatusLabel2
             // 
             toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            toolStripStatusLabel2.Size = new Size(768, 20);
+            toolStripStatusLabel2.Size = new Size(1673, 23);
             toolStripStatusLabel2.Spring = true;
             // 
             // lblLienKet
             // 
             lblLienKet.IsLink = true;
             lblLienKet.Name = "lblLienKet";
-            lblLienKet.Size = new Size(81, 20);
+            lblLienKet.Size = new Size(81, 23);
             lblLienKet.Text = "© 2026 FIT";
             lblLienKet.Click += lblLienKet_Click;
+            // 
+            // panelMain
+            // 
+            panelMain.BackgroundImage = Properties.Resources.br;
+            panelMain.BackgroundImageLayout = ImageLayout.Stretch;
+            panelMain.Dock = DockStyle.Fill;
+            panelMain.Location = new Point(0, 36);
+            panelMain.Name = "panelMain";
+            panelMain.Size = new Size(1902, 968);
+            panelMain.TabIndex = 3;
+            panelMain.Paint += panelMain_Paint;
             // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(982, 653);
+            ClientSize = new Size(1902, 1033);
+            Controls.Add(panelMain);
             Controls.Add(statusStrip1);
             Controls.Add(menuStrip);
             IsMdiContainer = true;
             MainMenuStrip = menuStrip;
             Name = "frmMain";
             Text = "Trang chủ";
+            WindowState = FormWindowState.Maximized;
             Load += frmMain_Load;
             menuStrip.ResumeLayout(false);
             menuStrip.PerformLayout();
@@ -326,5 +418,6 @@
         private ToolStripMenuItem mnuNguyenLieu;
         private ToolStripMenuItem mnuCongThuc;
         private ToolStripMenuItem mnuNhaCungCap;
+        private Panel panelMain;
     }
 }

@@ -31,25 +31,30 @@
             txtTenNL = new TextBox();
             txtTrangThai = new TextBox();
             gbThongTinKhachHang = new GroupBox();
-            panelTacVu = new Panel();
+            panelTimKiem = new Panel();
+            btnTim = new Button();
+            txtTimKiem = new TextBox();
+            btnNhapXuat = new Button();
+            panelNhapXuat = new Panel();
             btnNhap = new Button();
+            btnXuat = new Button();
+            panelCRUD = new Panel();
             btnThem = new Button();
             btnSua = new Button();
             btnXoa = new Button();
             btnLuu = new Button();
             btnHuyBo = new Button();
-            btnXuat = new Button();
-            btnTimKiem = new Button();
             btnTacVu = new Button();
             cboDonViTinh = new ComboBox();
             label6 = new Label();
             label5 = new Label();
             numDonGia = new NumericUpDown();
             label4 = new Label();
+            btnTimKiem = new Button();
             numSoLuong = new NumericUpDown();
-            btnThoat = new Button();
             label1 = new Label();
             label3 = new Label();
+            btnThoat = new Button();
             groupBox1 = new GroupBox();
             dgvNguyenLieu = new DataGridView();
             colID = new DataGridViewTextBoxColumn();
@@ -59,7 +64,9 @@
             GiaNL = new DataGridViewTextBoxColumn();
             TrangThai = new DataGridViewTextBoxColumn();
             gbThongTinKhachHang.SuspendLayout();
-            panelTacVu.SuspendLayout();
+            panelTimKiem.SuspendLayout();
+            panelNhapXuat.SuspendLayout();
+            panelCRUD.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numDonGia).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numSoLuong).BeginInit();
             groupBox1.SuspendLayout();
@@ -82,44 +89,77 @@
             // 
             // gbThongTinKhachHang
             // 
-            gbThongTinKhachHang.Controls.Add(panelTacVu);
+            gbThongTinKhachHang.Controls.Add(panelTimKiem);
+            gbThongTinKhachHang.Controls.Add(btnNhapXuat);
+            gbThongTinKhachHang.Controls.Add(panelNhapXuat);
+            gbThongTinKhachHang.Controls.Add(panelCRUD);
             gbThongTinKhachHang.Controls.Add(btnTacVu);
             gbThongTinKhachHang.Controls.Add(cboDonViTinh);
             gbThongTinKhachHang.Controls.Add(label6);
             gbThongTinKhachHang.Controls.Add(label5);
             gbThongTinKhachHang.Controls.Add(numDonGia);
             gbThongTinKhachHang.Controls.Add(label4);
+            gbThongTinKhachHang.Controls.Add(btnTimKiem);
             gbThongTinKhachHang.Controls.Add(numSoLuong);
-            gbThongTinKhachHang.Controls.Add(btnThoat);
             gbThongTinKhachHang.Controls.Add(label1);
             gbThongTinKhachHang.Controls.Add(label3);
             gbThongTinKhachHang.Controls.Add(txtTenNL);
             gbThongTinKhachHang.Controls.Add(txtTrangThai);
             gbThongTinKhachHang.Location = new Point(13, 17);
             gbThongTinKhachHang.Name = "gbThongTinKhachHang";
-            gbThongTinKhachHang.Size = new Size(958, 222);
+            gbThongTinKhachHang.Size = new Size(958, 254);
             gbThongTinKhachHang.TabIndex = 7;
             gbThongTinKhachHang.TabStop = false;
             gbThongTinKhachHang.Text = "Thông tin nguyên liệu";
             // 
-            // panelTacVu
+            // panelTimKiem
             // 
-            panelTacVu.Controls.Add(btnNhap);
-            panelTacVu.Controls.Add(btnThem);
-            panelTacVu.Controls.Add(btnSua);
-            panelTacVu.Controls.Add(btnXoa);
-            panelTacVu.Controls.Add(btnLuu);
-            panelTacVu.Controls.Add(btnHuyBo);
-            panelTacVu.Controls.Add(btnXuat);
-            panelTacVu.Controls.Add(btnTimKiem);
-            panelTacVu.Location = new Point(113, 116);
-            panelTacVu.Name = "panelTacVu";
-            panelTacVu.Size = new Size(516, 103);
-            panelTacVu.TabIndex = 65;
+            panelTimKiem.Controls.Add(btnTim);
+            panelTimKiem.Controls.Add(txtTimKiem);
+            panelTimKiem.Location = new Point(575, 153);
+            panelTimKiem.Name = "panelTimKiem";
+            panelTimKiem.Size = new Size(255, 95);
+            panelTimKiem.TabIndex = 69;
+            // 
+            // btnTim
+            // 
+            btnTim.Location = new Point(37, 57);
+            btnTim.Name = "btnTim";
+            btnTim.Size = new Size(169, 30);
+            btnTim.TabIndex = 68;
+            btnTim.Text = "Tìm kiếm nguyên liệu";
+            btnTim.UseVisualStyleBackColor = true;
+            btnTim.Click += btnTim_Click;
+            // 
+            // txtTimKiem
+            // 
+            txtTimKiem.Location = new Point(3, 24);
+            txtTimKiem.Name = "txtTimKiem";
+            txtTimKiem.Size = new Size(249, 27);
+            txtTimKiem.TabIndex = 0;
+            // 
+            // btnNhapXuat
+            // 
+            btnNhapXuat.Location = new Point(452, 126);
+            btnNhapXuat.Name = "btnNhapXuat";
+            btnNhapXuat.Size = new Size(107, 30);
+            btnNhapXuat.TabIndex = 67;
+            btnNhapXuat.Text = "Nhập - xuất";
+            btnNhapXuat.UseVisualStyleBackColor = true;
+            btnNhapXuat.Click += btnNhapXuat_Click;
+            // 
+            // panelNhapXuat
+            // 
+            panelNhapXuat.Controls.Add(btnNhap);
+            panelNhapXuat.Controls.Add(btnXuat);
+            panelNhapXuat.Location = new Point(433, 162);
+            panelNhapXuat.Name = "panelNhapXuat";
+            panelNhapXuat.Size = new Size(136, 86);
+            panelNhapXuat.TabIndex = 66;
             // 
             // btnNhap
             // 
-            btnNhap.Location = new Point(391, 19);
+            btnNhap.Location = new Point(17, 18);
             btnNhap.Name = "btnNhap";
             btnNhap.Size = new Size(107, 30);
             btnNhap.TabIndex = 48;
@@ -127,59 +167,9 @@
             btnNhap.UseVisualStyleBackColor = true;
             btnNhap.Click += btnNhap_Click;
             // 
-            // btnThem
-            // 
-            btnThem.Location = new Point(4, 18);
-            btnThem.Name = "btnThem";
-            btnThem.Size = new Size(107, 30);
-            btnThem.TabIndex = 40;
-            btnThem.Text = "Thêm";
-            btnThem.UseVisualStyleBackColor = true;
-            btnThem.Click += btnThem_Click;
-            // 
-            // btnSua
-            // 
-            btnSua.Location = new Point(140, 19);
-            btnSua.Name = "btnSua";
-            btnSua.Size = new Size(107, 30);
-            btnSua.TabIndex = 41;
-            btnSua.Text = "Sửa";
-            btnSua.UseVisualStyleBackColor = true;
-            btnSua.Click += btnSua_Click;
-            // 
-            // btnXoa
-            // 
-            btnXoa.Location = new Point(266, 18);
-            btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(107, 30);
-            btnXoa.TabIndex = 42;
-            btnXoa.Text = "Xoá";
-            btnXoa.UseVisualStyleBackColor = true;
-            btnXoa.Click += btnXoa_Click;
-            // 
-            // btnLuu
-            // 
-            btnLuu.Location = new Point(4, 64);
-            btnLuu.Name = "btnLuu";
-            btnLuu.Size = new Size(107, 30);
-            btnLuu.TabIndex = 43;
-            btnLuu.Text = "Lưu";
-            btnLuu.UseVisualStyleBackColor = true;
-            btnLuu.Click += btnLuu_Click;
-            // 
-            // btnHuyBo
-            // 
-            btnHuyBo.Location = new Point(140, 64);
-            btnHuyBo.Name = "btnHuyBo";
-            btnHuyBo.Size = new Size(107, 30);
-            btnHuyBo.TabIndex = 47;
-            btnHuyBo.Text = "Huỷ bỏ";
-            btnHuyBo.UseVisualStyleBackColor = true;
-            btnHuyBo.Click += btnHuyBo_Click;
-            // 
             // btnXuat
             // 
-            btnXuat.Location = new Point(391, 61);
+            btnXuat.Location = new Point(17, 53);
             btnXuat.Name = "btnXuat";
             btnXuat.Size = new Size(107, 30);
             btnXuat.TabIndex = 49;
@@ -187,22 +177,75 @@
             btnXuat.UseVisualStyleBackColor = true;
             btnXuat.Click += btnXuat_Click;
             // 
-            // btnTimKiem
+            // panelCRUD
             // 
-            btnTimKiem.Location = new Point(266, 64);
-            btnTimKiem.Name = "btnTimKiem";
-            btnTimKiem.Size = new Size(107, 30);
-            btnTimKiem.TabIndex = 48;
-            btnTimKiem.Text = "Tìm kiếm";
-            btnTimKiem.UseVisualStyleBackColor = true;
+            panelCRUD.Controls.Add(btnThem);
+            panelCRUD.Controls.Add(btnSua);
+            panelCRUD.Controls.Add(btnXoa);
+            panelCRUD.Controls.Add(btnLuu);
+            panelCRUD.Controls.Add(btnHuyBo);
+            panelCRUD.Location = new Point(206, 162);
+            panelCRUD.Name = "panelCRUD";
+            panelCRUD.Size = new Size(203, 86);
+            panelCRUD.TabIndex = 65;
+            // 
+            // btnThem
+            // 
+            btnThem.Location = new Point(4, 18);
+            btnThem.Name = "btnThem";
+            btnThem.Size = new Size(57, 30);
+            btnThem.TabIndex = 40;
+            btnThem.Text = "Thêm";
+            btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
+            // 
+            // btnSua
+            // 
+            btnSua.Location = new Point(67, 18);
+            btnSua.Name = "btnSua";
+            btnSua.Size = new Size(57, 30);
+            btnSua.TabIndex = 41;
+            btnSua.Text = "Sửa";
+            btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
+            // 
+            // btnXoa
+            // 
+            btnXoa.Location = new Point(133, 18);
+            btnXoa.Name = "btnXoa";
+            btnXoa.Size = new Size(57, 30);
+            btnXoa.TabIndex = 42;
+            btnXoa.Text = "Xoá";
+            btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
+            // 
+            // btnLuu
+            // 
+            btnLuu.Location = new Point(37, 53);
+            btnLuu.Name = "btnLuu";
+            btnLuu.Size = new Size(57, 30);
+            btnLuu.TabIndex = 43;
+            btnLuu.Text = "Lưu";
+            btnLuu.UseVisualStyleBackColor = true;
+            btnLuu.Click += btnLuu_Click;
+            // 
+            // btnHuyBo
+            // 
+            btnHuyBo.Location = new Point(100, 53);
+            btnHuyBo.Name = "btnHuyBo";
+            btnHuyBo.Size = new Size(57, 30);
+            btnHuyBo.TabIndex = 47;
+            btnHuyBo.Text = "Huỷ bỏ";
+            btnHuyBo.UseVisualStyleBackColor = true;
+            btnHuyBo.Click += btnHuyBo_Click;
             // 
             // btnTacVu
             // 
-            btnTacVu.Location = new Point(10, 114);
+            btnTacVu.Location = new Point(265, 126);
             btnTacVu.Name = "btnTacVu";
             btnTacVu.Size = new Size(97, 30);
             btnTacVu.TabIndex = 64;
-            btnTacVu.Text = "Tác vụ ";
+            btnTacVu.Text = "CRUD";
             btnTacVu.UseVisualStyleBackColor = true;
             btnTacVu.Click += btnTacVu_Click;
             // 
@@ -250,6 +293,16 @@
             label4.TabIndex = 57;
             label4.Text = "Số lượng:";
             // 
+            // btnTimKiem
+            // 
+            btnTimKiem.Location = new Point(649, 126);
+            btnTimKiem.Name = "btnTimKiem";
+            btnTimKiem.Size = new Size(107, 30);
+            btnTimKiem.TabIndex = 48;
+            btnTimKiem.Text = "Tìm kiếm";
+            btnTimKiem.UseVisualStyleBackColor = true;
+            btnTimKiem.Click += btnTimKiem_Click;
+            // 
             // numSoLuong
             // 
             numSoLuong.Location = new Point(675, 40);
@@ -258,16 +311,6 @@
             numSoLuong.Size = new Size(177, 27);
             numSoLuong.TabIndex = 56;
             numSoLuong.ThousandsSeparator = true;
-            // 
-            // btnThoat
-            // 
-            btnThoat.Location = new Point(10, 164);
-            btnThoat.Name = "btnThoat";
-            btnThoat.Size = new Size(97, 30);
-            btnThoat.TabIndex = 54;
-            btnThoat.Text = "Thoát";
-            btnThoat.UseVisualStyleBackColor = true;
-            btnThoat.Click += btnThoat_Click;
             // 
             // label1
             // 
@@ -287,12 +330,22 @@
             label3.TabIndex = 32;
             label3.Text = "Trạng thái:";
             // 
+            // btnThoat
+            // 
+            btnThoat.Location = new Point(459, 612);
+            btnThoat.Name = "btnThoat";
+            btnThoat.Size = new Size(97, 30);
+            btnThoat.TabIndex = 54;
+            btnThoat.Text = "Thoát";
+            btnThoat.UseVisualStyleBackColor = true;
+            btnThoat.Click += btnThoat_Click;
+            // 
             // groupBox1
             // 
             groupBox1.Controls.Add(dgvNguyenLieu);
-            groupBox1.Location = new Point(12, 245);
+            groupBox1.Location = new Point(13, 277);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(958, 391);
+            groupBox1.Size = new Size(958, 329);
             groupBox1.TabIndex = 8;
             groupBox1.TabStop = false;
             groupBox1.Text = "Danh sách nguyên liệu";
@@ -309,7 +362,7 @@
             dgvNguyenLieu.MultiSelect = false;
             dgvNguyenLieu.Name = "dgvNguyenLieu";
             dgvNguyenLieu.RowHeadersWidth = 51;
-            dgvNguyenLieu.Size = new Size(952, 365);
+            dgvNguyenLieu.Size = new Size(952, 303);
             dgvNguyenLieu.TabIndex = 0;
             // 
             // colID
@@ -361,12 +414,16 @@
             ClientSize = new Size(982, 653);
             Controls.Add(gbThongTinKhachHang);
             Controls.Add(groupBox1);
+            Controls.Add(btnThoat);
             Name = "frmNguyenLieu";
             Text = "Nguyên Liệu";
             Load += frmNguyenLieu_Load;
             gbThongTinKhachHang.ResumeLayout(false);
             gbThongTinKhachHang.PerformLayout();
-            panelTacVu.ResumeLayout(false);
+            panelTimKiem.ResumeLayout(false);
+            panelTimKiem.PerformLayout();
+            panelNhapXuat.ResumeLayout(false);
+            panelCRUD.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)numDonGia).EndInit();
             ((System.ComponentModel.ISupportInitialize)numSoLuong).EndInit();
             groupBox1.ResumeLayout(false);
@@ -378,7 +435,7 @@
         private TextBox txtTenNL;
         private TextBox txtTrangThai;
         private GroupBox gbThongTinKhachHang;
-        private Panel panelTacVu;
+        private Panel panelCRUD;
         private Button btnNhap;
         private Button btnThem;
         private Button btnSua;
@@ -405,5 +462,10 @@
         private DataGridViewTextBoxColumn SoLuong;
         private DataGridViewTextBoxColumn GiaNL;
         private DataGridViewTextBoxColumn TrangThai;
+        private Panel panelNhapXuat;
+        private Button btnNhapXuat;
+        private Button btnTim;
+        private TextBox txtTimKiem;
+        private Panel panelTimKiem;
     }
 }

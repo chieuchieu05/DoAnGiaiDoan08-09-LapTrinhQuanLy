@@ -143,6 +143,17 @@ namespace QuanLyCuaHangTraSua.Forms
             lblTrangThai.Text = "Nhân viên: " + hoVaTenNhanVien;
         }
 
+        private void OpenForm(Form f)
+        {
+            panelMain.Controls.Clear();
+
+            f.TopLevel = false;
+            f.FormBorderStyle = FormBorderStyle.None;
+            f.Dock = DockStyle.Fill;
+
+            panelMain.Controls.Add(f);
+            f.Show();
+        }
         private void mnuLoaiSanPham_Click(object sender, EventArgs e)
         {
             if (loaiSanPham == null || loaiSanPham.IsDisposed)
@@ -169,38 +180,50 @@ namespace QuanLyCuaHangTraSua.Forms
 
         private void mnuKhachHang_Click(object sender, EventArgs e)
         {
+            //if (khachHang == null || khachHang.IsDisposed)
+            //{
+            //    khachHang = new frmKhachHang();
+            //    khachHang.MdiParent = this;
+            //    khachHang.Show();
+            //}
+            //else
+            //    khachHang.Activate();
             if (khachHang == null || khachHang.IsDisposed)
-            {
                 khachHang = new frmKhachHang();
-                khachHang.MdiParent = this;
-                khachHang.Show();
-            }
-            else
-                khachHang.Activate();
+
+            OpenForm(khachHang);
         }
 
         private void mnuNhanVien_Click(object sender, EventArgs e)
         {
+            //if (nhanVien == null || nhanVien.IsDisposed)
+            //{
+            //    nhanVien = new frmNhanVien();
+            //    nhanVien.MdiParent = this;
+            //    nhanVien.Show();
+            //}
+            //else
+            //    nhanVien.Activate();
             if (nhanVien == null || nhanVien.IsDisposed)
-            {
                 nhanVien = new frmNhanVien();
-                nhanVien.MdiParent = this;
-                nhanVien.Show();
-            }
-            else
-                nhanVien.Activate();
+
+            OpenForm(nhanVien);
         }
 
         private void mnuHoaDon_Click(object sender, EventArgs e)
         {
+            //if (hoaDon == null || hoaDon.IsDisposed)
+            //{
+            //    hoaDon = new frmHoaDon();
+            //    hoaDon.MdiParent = this;
+            //    hoaDon.Show();
+            //}
+            //else
+            //    hoaDon.Activate();
             if (hoaDon == null || hoaDon.IsDisposed)
-            {
                 hoaDon = new frmHoaDon();
-                hoaDon.MdiParent = this;
-                hoaDon.Show();
-            }
-            else
-                hoaDon.Activate();
+
+            OpenForm(hoaDon);
         }
 
         private void mnuPhieuNhap_Click(object sender, EventArgs e)
@@ -302,6 +325,11 @@ namespace QuanLyCuaHangTraSua.Forms
             }
             else
                 thongKeDoanhThu.Activate();
+        }
+
+        private void panelMain_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

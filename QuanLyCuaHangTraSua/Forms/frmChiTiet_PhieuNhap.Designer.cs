@@ -37,11 +37,6 @@
             label1 = new Label();
             groupBox2 = new GroupBox();
             dgvChiTietPhieuNhap = new DataGridView();
-            colID = new DataGridViewTextBoxColumn();
-            TenNguyenLieu = new DataGridViewTextBoxColumn();
-            DonGia = new DataGridViewTextBoxColumn();
-            SoLuong = new DataGridViewTextBoxColumn();
-            ThanhTien = new DataGridViewTextBoxColumn();
             btnXoa = new Button();
             btnXacNhanNhapHang = new Button();
             numGiaNhap = new NumericUpDown();
@@ -53,6 +48,12 @@
             btnInPhieuNhap = new Button();
             btnLuuPhieuNhap = new Button();
             btnThoat = new Button();
+            colID = new DataGridViewTextBoxColumn();
+            TenNguyenLieu = new DataGridViewTextBoxColumn();
+            GiaNhap = new DataGridViewTextBoxColumn();
+            SoLuong = new DataGridViewTextBoxColumn();
+            ThanhTien = new DataGridViewTextBoxColumn();
+            NguyenLieuID = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvChiTietPhieuNhap).BeginInit();
@@ -149,7 +150,7 @@
             dgvChiTietPhieuNhap.AllowUserToDeleteRows = false;
             dgvChiTietPhieuNhap.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvChiTietPhieuNhap.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvChiTietPhieuNhap.Columns.AddRange(new DataGridViewColumn[] { colID, TenNguyenLieu, DonGia, SoLuong, ThanhTien });
+            dgvChiTietPhieuNhap.Columns.AddRange(new DataGridViewColumn[] { colID, TenNguyenLieu, GiaNhap, SoLuong, ThanhTien, NguyenLieuID });
             dgvChiTietPhieuNhap.Dock = DockStyle.Bottom;
             dgvChiTietPhieuNhap.Location = new Point(3, 127);
             dgvChiTietPhieuNhap.MultiSelect = false;
@@ -158,41 +159,6 @@
             dgvChiTietPhieuNhap.Size = new Size(952, 268);
             dgvChiTietPhieuNhap.TabIndex = 16;
             dgvChiTietPhieuNhap.CellClick += dgvChiTietPhieuNhap_CellClick;
-            // 
-            // colID
-            // 
-            colID.DataPropertyName = "ID";
-            colID.HeaderText = "ID";
-            colID.MinimumWidth = 6;
-            colID.Name = "colID";
-            // 
-            // TenNguyenLieu
-            // 
-            TenNguyenLieu.DataPropertyName = "TenNguyenLieu";
-            TenNguyenLieu.HeaderText = "Tên nguyên liệu";
-            TenNguyenLieu.MinimumWidth = 6;
-            TenNguyenLieu.Name = "TenNguyenLieu";
-            // 
-            // DonGia
-            // 
-            DonGia.DataPropertyName = "DonGia";
-            DonGia.HeaderText = "Đơn giá bán";
-            DonGia.MinimumWidth = 6;
-            DonGia.Name = "DonGia";
-            // 
-            // SoLuong
-            // 
-            SoLuong.DataPropertyName = "SoLuong";
-            SoLuong.HeaderText = "Số lượng";
-            SoLuong.MinimumWidth = 6;
-            SoLuong.Name = "SoLuong";
-            // 
-            // ThanhTien
-            // 
-            ThanhTien.DataPropertyName = "ThanhTien";
-            ThanhTien.HeaderText = "Thành tiền";
-            ThanhTien.MinimumWidth = 6;
-            ThanhTien.Name = "ThanhTien";
             // 
             // btnXoa
             // 
@@ -297,6 +263,49 @@
             btnThoat.UseVisualStyleBackColor = true;
             btnThoat.Click += btnThoat_Click;
             // 
+            // colID
+            // 
+            colID.DataPropertyName = "ID";
+            colID.HeaderText = "ID";
+            colID.MinimumWidth = 6;
+            colID.Name = "colID";
+            // 
+            // TenNguyenLieu
+            // 
+            TenNguyenLieu.DataPropertyName = "TenNguyenLieu";
+            TenNguyenLieu.HeaderText = "Tên nguyên liệu";
+            TenNguyenLieu.MinimumWidth = 6;
+            TenNguyenLieu.Name = "TenNguyenLieu";
+            // 
+            // GiaNhap
+            // 
+            GiaNhap.DataPropertyName = "GiaNhap";
+            GiaNhap.HeaderText = "Giá nhập";
+            GiaNhap.MinimumWidth = 6;
+            GiaNhap.Name = "GiaNhap";
+            // 
+            // SoLuong
+            // 
+            SoLuong.DataPropertyName = "SoLuong";
+            SoLuong.HeaderText = "Số lượng";
+            SoLuong.MinimumWidth = 6;
+            SoLuong.Name = "SoLuong";
+            // 
+            // ThanhTien
+            // 
+            ThanhTien.DataPropertyName = "ThanhTien";
+            ThanhTien.HeaderText = "Thành tiền";
+            ThanhTien.MinimumWidth = 6;
+            ThanhTien.Name = "ThanhTien";
+            // 
+            // NguyenLieuID
+            // 
+            NguyenLieuID.DataPropertyName = "NguyenLieuID";
+            NguyenLieuID.HeaderText = "NguyenLieuID";
+            NguyenLieuID.MinimumWidth = 6;
+            NguyenLieuID.Name = "NguyenLieuID";
+            NguyenLieuID.Visible = false;
+            // 
             // frmChiTiet_PhieuNhap
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -344,8 +353,9 @@
         private Button btnThoat;
         private DataGridViewTextBoxColumn colID;
         private DataGridViewTextBoxColumn TenNguyenLieu;
-        private DataGridViewTextBoxColumn DonGia;
+        private DataGridViewTextBoxColumn GiaNhap;
         private DataGridViewTextBoxColumn SoLuong;
         private DataGridViewTextBoxColumn ThanhTien;
+        private DataGridViewTextBoxColumn NguyenLieuID;
     }
 }

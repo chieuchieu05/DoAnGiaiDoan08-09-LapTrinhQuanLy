@@ -1,4 +1,5 @@
-﻿using QuanLyCuaHangTraSua.Data;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using QuanLyCuaHangTraSua.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -211,11 +212,13 @@ namespace QuanLyCuaHangTraSua.Forms
             {
                 DataGridViewRow row = dgvChiTietPhieuNhap.Rows[e.RowIndex];
 
-                numGiaNhap.Value = Convert.ToDecimal(row.Cells["DonGia"].Value);
+                numGiaNhap.Value = Convert.ToDecimal(row.Cells["GiaNhap"].Value);
                 numSoLuongNhap.Value = Convert.ToDecimal(row.Cells["SoLuong"].Value);
-
-                cboNguyenLieu.SelectedValue = row.Cells["colID"].Value; //
+                MessageBox.Show("ID = " + row.Cells["NguyenLieuID"].Value);
+                cboNguyenLieu.SelectedValue = row.Cells["NguyenLieuID"].Value; //
+                
             }
+            
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

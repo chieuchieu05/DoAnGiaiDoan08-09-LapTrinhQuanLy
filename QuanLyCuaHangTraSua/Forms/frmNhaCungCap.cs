@@ -51,6 +51,10 @@ namespace QuanLyCuaHangTraSua.Forms
             }
 
             BatTatChucNang(false);
+
+            panelCRUD.Visible = !panelCRUD.Visible;
+            panelNhapXuat.Visible = !panelNhapXuat.Visible;
+
             dgvNhaCungCap.AutoGenerateColumns = true;
 
             List<NHACUNGCAP> nv = new List<NHACUNGCAP>();
@@ -177,7 +181,7 @@ namespace QuanLyCuaHangTraSua.Forms
 
             //BindingSource bindingSource = new BindingSource();
             bindingSource.DataSource = ketQua;
-            
+
             //dgvNhanVien.DataSource = bindingSource;
         }
 
@@ -288,6 +292,37 @@ namespace QuanLyCuaHangTraSua.Forms
                 {
                     MessageBox.Show(ex.Message, "Lỗi");
                 }
+            }
+        }
+        void DongCacPanels()
+        {
+            panelCRUD.Visible = false;
+            panelNhapXuat.Visible = false;
+        }
+
+        private void btnCRUD_Click(object sender, EventArgs e)
+        {
+            if (!panelCRUD.Visible)
+            {
+                DongCacPanels();
+                panelCRUD.Visible = true;
+            }
+            else
+            {
+                panelCRUD.Visible = false;
+            }
+        }
+
+        private void btnNhapXuat_Click(object sender, EventArgs e)
+        {
+            if (!panelNhapXuat.Visible)
+            {
+                DongCacPanels();
+                panelNhapXuat.Visible = true;
+            }
+            else
+            {
+                panelNhapXuat.Visible = false;
             }
         }
     }

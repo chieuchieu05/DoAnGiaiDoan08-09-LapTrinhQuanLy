@@ -74,10 +74,16 @@ namespace QuanLyCuaHangTraSua.Forms
             BindingSource bindingSource = new BindingSource();
             bindingSource.DataSource = ct;
 
+            cboTenSanPham.DataBindings.Clear();
+            cboTenSanPham.DataBindings.Add("SelectedValue", bindingSource, "SanPhamID", false, DataSourceUpdateMode.Never);
+
+            cboNguyenLieu.DataBindings.Clear();
+            cboNguyenLieu.DataBindings.Add("SelectedValue", bindingSource, "NguyenLieuID", false, DataSourceUpdateMode.Never);
+
             numDinhLuong.DataBindings.Clear();
             numDinhLuong.DataBindings.Add("Value", bindingSource, "DinhLuong", false, DataSourceUpdateMode.Never);
 
-            dgvCongThuc.DataSource = ct;
+            dgvCongThuc.DataSource = bindingSource;
 
         }
 
@@ -165,7 +171,7 @@ namespace QuanLyCuaHangTraSua.Forms
 
         private void btnTacVu_Click(object sender, EventArgs e)
         {
-            panelTacVu.Visible = true;
+            panelTacVu.Visible = !panelTacVu.Visible;
         }
 
         private void btnHuyBo_Click(object sender, EventArgs e)

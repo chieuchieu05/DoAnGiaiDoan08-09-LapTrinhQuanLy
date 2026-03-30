@@ -128,7 +128,7 @@ namespace QuanLyCuaHangTraSua.Forms
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            int maSanPham = Convert.ToInt32(dgvChiTietHoaDon.CurrentRow.Cells["colID"].Value.ToString());//
+            int maSanPham = Convert.ToInt32(dgvChiTietHoaDon.CurrentRow.Cells["SanPhamID"].Value.ToString());//
             var chiTiet = hoaDonChiTiet.FirstOrDefault(x => x.SanPhamID == maSanPham);
             if (chiTiet != null)
             {
